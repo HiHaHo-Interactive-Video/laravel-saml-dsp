@@ -2,13 +2,13 @@
 
 namespace HiHaHo\Saml\Models;
 
-use OneLogin_Saml2_Auth;
+use HiHaHo\Saml\OneLogin\OneLoginSaml2Auth;
 
 class SamlUser
 {
     protected $auth;
 
-    public function __construct(OneLogin_Saml2_Auth $auth)
+    public function __construct(OneLoginSaml2Auth $auth)
     {
         $this->auth = $auth;
     }

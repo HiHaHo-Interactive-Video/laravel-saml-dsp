@@ -7,6 +7,7 @@ use HiHaHo\Saml\Console\GetSamlConfigCommand;
 use HiHaHo\Saml\Console\ListSamlConfigsCommand;
 use HiHaHo\Saml\Models\SamlConfig;
 use HiHaHo\Saml\Models\SamlSecurity;
+use HiHaHo\Saml\OneLogin\OneLoginSaml2Auth;
 use HiHaHo\Saml\Transformers\SamlConfigTransformer;
 use Illuminate\Container\Container;
 use Illuminate\Routing\Router;
@@ -14,7 +15,6 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Schema;
 use \Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use OneLogin_Saml2_Auth;
 use Spatie\Fractal\Fractal;
 use Spatie\Fractalistic\ArraySerializer;
 
@@ -68,14 +68,14 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function registerOneLoginSamlContainer()
     {
-        $this->app->bind(OneLogin_Saml2_Auth::class, function (Container $app) {
+        $this->app->bind(OneLoginSaml2Auth::class, function (Container $app) {
             $samlConfig = $app->make('samlConfigTransformed');
 
             if (!isset($samlConfig)) {
                 return;
             }
 
-            return new OneLogin_Saml2_Auth($samlConfig);
+            return new OneLoginSaml2Auth($samlConfig);
         });
     }
 

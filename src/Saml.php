@@ -3,18 +3,19 @@
 namespace HiHaHo\Saml;
 
 use HiHaHo\Saml\Models\SamlUser;
+use HiHaHo\Saml\OneLogin\OneLoginSaml2Auth;
 use Illuminate\Http\Request;
 
 class Saml
 {
     /**
-     * @var \OneLogin_Saml2_Auth
+     * @var OneLoginSaml2Auth
      */
     protected $oneLoginAuth;
 
     protected $samlConfig;
 
-    public function __construct(\OneLogin_Saml2_Auth $auth = null, Request $request)
+    public function __construct(OneLoginSaml2Auth $auth = null, Request $request)
     {
         $this->samlConfig = app()->make('samlConfigTransformed');
         $this->oneLoginAuth = $auth;
@@ -89,7 +90,7 @@ class Saml
      */
     public function acs()
     {
-        /** @var $auth OneLogin_Saml2_Auth */
+        /** @var $auth OneLoginSaml2Auth */
         $auth = $this->oneLoginAuth;
         $auth->processResponse();
         $errors = $auth->getErrors();
@@ -120,8 +121,8 @@ class Saml
     }
 
     /**
-     * Get the last error reason from \OneLogin_Saml2_Auth, useful for error debugging.
-     * @see \OneLogin_Saml2_Auth::getLastErrorReason()
+     * Get the last error reason from OneLoginSaml2Auth, useful for error debugging.
+     * @see OneLoginSaml2Auth::getLastErrorReason()
      * @return string
      */
     public function getLastErrorReason() {
