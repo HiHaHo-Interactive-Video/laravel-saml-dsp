@@ -25,7 +25,7 @@ abstract class SamlBaseController extends Controller
         }
 
         $this->samlConfig = SamlConfig::whereSlug($request->route('samlConfig'))->first();
-        if (!isset($samlConfig)) {
+        if (!isset($this->samlConfig)) {
             return $this->throwSamlConfigModelNotFoundException();
         }
     }
