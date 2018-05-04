@@ -1,0 +1,39 @@
+{
+    "name": "hihaho/laravel-saml-dsp",
+    "description": "A Laravel package that functions as a SAML Service Provder with the ability to connect to multiple Identity Providers",
+    "keywords": ["laravel", "saml", "saml2", "onelogin", "service provider", "identity provider"],
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/support": "5.5.x|5.6.x",
+        "illuminate/database": "5.5.x|5.6.x",
+        "illuminate/routing": "5.5.x|5.6.x",
+        "illuminate/console": "5.5.x|5.6.x",
+        "onelogin/php-saml": "^2.13",
+        "spatie/laravel-fractal": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "HiHaHo\\Saml\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Robert Boes",
+            "email": "robert@hihaho.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HiHaHo\\Saml\\ServiceProvider"
+            ],
+            "aliases": {
+                "Saml": "HiHaHo\\Saml\\Facade"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
