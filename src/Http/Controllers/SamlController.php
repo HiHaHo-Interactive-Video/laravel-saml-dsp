@@ -26,7 +26,7 @@ class SamlController extends SamlBaseController
 
     public function login()
     {
-        $url = $this->saml->loginUrl('/dikkeblaatnummerdertien');
+        $url = $this->saml->loginUrl('/login');
 
         return redirect()->to($url);
     }
