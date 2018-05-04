@@ -30,7 +30,7 @@ class CreateSamlConfigs extends Migration
 
             $table->string('sp_name_id_format')->nullable();
             $table->text('sp_x509_cert')->nullable();
-            $table->string('sp_private_key')->nullable();
+            $table->text('sp_private_key')->nullable();
 //            $table->string('sp_private_key_pass')->nullable();
             $table->string('sp_entity_id')->nullable();
 
