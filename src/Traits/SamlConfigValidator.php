@@ -2,13 +2,18 @@
 
 namespace HiHaHo\Saml\Traits;
 
+use Illuminate\Validation\Rule;
+
 trait SamlConfigValidator
 {
     public function rules()
     {
         return [
             'name' => 'string',
-            'slug' => 'string|unique:saml_configs,slug',
+            'slug' => [
+                'string',
+                Rule::unique('saml_configs')->ignore($this->samlConfig),
+            ],
             'login_handler' => 'nullable|string',
             'idp_base_url' => 'nullable|url',
             'idp_entity_id' => 'required|string',

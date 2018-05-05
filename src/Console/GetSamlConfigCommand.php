@@ -15,7 +15,7 @@ class GetSamlConfigCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'saml:view-config {samlConfig : The ID of the SAML config}';
+    protected $signature = 'saml:view {samlConfig : The ID of the SAML config}';
 
     /**
      * The console command description.

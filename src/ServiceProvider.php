@@ -3,6 +3,7 @@
 namespace HiHaHo\Saml;
 
 use HiHaHo\Saml\Console\CreateSamlConfigCommand;
+use HiHaHo\Saml\Console\CreateSamlSecurityCommand;
 use HiHaHo\Saml\Console\GetSamlConfigCommand;
 use HiHaHo\Saml\Console\ListSamlConfigsCommand;
 use HiHaHo\Saml\Models\SamlConfig;
@@ -97,6 +98,7 @@ class ServiceProvider extends BaseServiceProvider
 
             $this->commands([
                 CreateSamlConfigCommand::class,
+                CreateSamlSecurityCommand::class,
                 ListSamlConfigsCommand::class,
                 GetSamlConfigCommand::class,
             ]);

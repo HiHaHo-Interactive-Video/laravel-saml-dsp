@@ -1,5 +1,7 @@
 <?php
 
+use HiHaHo\Saml\Enums\DigestAlgorithm;
+use HiHaHo\Saml\Enums\SignatureAlgoritm;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -22,7 +24,7 @@ class CreateSamlSecurity extends Migration
             $table->boolean('logout_request_signed')->default(false);
             $table->boolean('logout_response_signed')->default(false);
             $table->boolean('sign_metadata')->default(false);
-            $table->json('sign_metadata_key_file_name');
+            $table->json('sign_metadata_key_file_name')->nullable();
             $table->boolean('want_messages_signed')->default(false);
             $table->boolean('want_assertions_encrypted')->default(false);
             $table->boolean('want_assertions_signed')->default(false);
@@ -32,18 +34,18 @@ class CreateSamlSecurity extends Migration
             $table->boolean('want_XML_validation')->default(true);
             $table->boolean('relax_destination_validation')->default(false);
             $table->enum('signature_algorithm', [
-                'http://www.w3.org/2000/09/xmldsig#rsa-sha1',
-                'http://www.w3.org/2000/09/xmldsig#dsa-sha1',
-                'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256',
-                'http://www.w3.org/2001/04/xmldsig-more#rsa-sha384',
-                'http://www.w3.org/2001/04/xmldsig-more#rsa-sha512',
-            ])->default('http://www.w3.org/2001/04/xmldsig-more#rsa-sha256');
+                SignatureAlgoritm::RSA_SHA1,
+                SignatureAlgoritm::DSA_SHA1,
+                SignatureAlgoritm::RSA_SHA256,
+                SignatureAlgoritm::RSA_SHA384,
+                SignatureAlgoritm::RSA_SHA512,
+            ])->default(SignatureAlgoritm::RSA_SHA256);
             $table->enum('digest_algorithm', [
-                'http://www.w3.org/2000/09/xmldsig#sha1',
-                'http://www.w3.org/2001/04/xmlenc#sha256',
-                'http://www.w3.org/2001/04/xmldsig-more#sha384',
-                'http://www.w3.org/2001/04/xmlenc#sha512',
-            ])->default('http://www.w3.org/2001/04/xmlenc#sha256');
+                DigestAlgorithm::SHA1,
+                DigestAlgorithm::SHA256,
+                DigestAlgorithm::SHA384,
+                DigestAlgorithm::SHA512,
+            ])->default(DigestAlgorithm::SHA256);
             $table->boolean('lowercase_urlencoding')->default(false);
 
             $table->timestamps();
