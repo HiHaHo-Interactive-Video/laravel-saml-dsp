@@ -35,7 +35,7 @@ trait UsesPrivateKeys
         }
 
         //TODO: Remove config
-        if (!openssl_pkey_export($res, $pkey, null, ['config' => 'C:\xampp71\apache\conf\openssl.cnf'])) {
+        if (!openssl_pkey_export($res, $pkey, null)) {
             throw new \Exception('Could not export private key-file at path \'' . $path . '\'');
         }
 

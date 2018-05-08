@@ -24,7 +24,7 @@ class CreateSamlSecurity extends Migration
             $table->boolean('logout_request_signed')->default(false);
             $table->boolean('logout_response_signed')->default(false);
             $table->boolean('sign_metadata')->default(false);
-            $table->json('sign_metadata_key_file_name')->nullable();
+            $table->text('sign_metadata_key_file_name')->nullable();
             $table->boolean('want_messages_signed')->default(false);
             $table->boolean('want_assertions_encrypted')->default(false);
             $table->boolean('want_assertions_signed')->default(false);
