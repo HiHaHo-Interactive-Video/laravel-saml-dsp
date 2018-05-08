@@ -15,6 +15,8 @@ return [
     'register_routes' => true,
     'route_prefix' => 'saml',
 
+    'migrations' => true,
+
     'sp' => [
 
         // Specifies constraints on the name identifier to be used to

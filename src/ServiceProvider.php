@@ -94,7 +94,7 @@ class ServiceProvider extends BaseServiceProvider
                 $this->getPackageConfigPath() => config_path('saml-dsp.php')
             ], 'config');
 
-            $this->loadMigrationsFrom(__DIR__.'/../migrations');
+            $this->loadMigrations();
 
             $this->commands([
                 CreateSamlConfigCommand::class,
@@ -127,5 +127,14 @@ class ServiceProvider extends BaseServiceProvider
     protected function getPackageConfigPath()
     {
         return __DIR__.'/../config/saml-dsp.php';
+    }
+
+    protected function loadMigrations()
+    {
+        if (!config('saml-dsp.migrations')) {
+            return;
+        }
+
+        $this->loadMigrationsFrom(__DIR__.'/../migrations');
     }
 }
