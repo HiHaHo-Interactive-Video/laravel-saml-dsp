@@ -9,7 +9,9 @@
 namespace HiHaHo\Saml\OneLogin;
 
 
-class OneLoginSaml2Auth extends \OneLogin_Saml2_Auth
+use OneLogin\Saml2\Auth;
+
+class OneLoginSaml2Auth extends Auth
 {
 
 }

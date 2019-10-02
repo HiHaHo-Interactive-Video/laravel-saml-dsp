@@ -5,6 +5,7 @@ namespace HiHaHo\Saml;
 use HiHaHo\Saml\Models\SamlUser;
 use HiHaHo\Saml\OneLogin\OneLoginSaml2Auth;
 use Illuminate\Http\Request;
+use OneLogin\Saml2\Error;
 
 class Saml
 {
@@ -40,7 +41,7 @@ class Saml
         if (!empty($errors)) {
             throw new \InvalidArgumentException(
                 'Invalid SP metadata: ' . implode(', ', $errors),
-                \OneLogin_Saml2_Error::METADATA_SP_INVALID
+                Error::METADATA_SP_INVALID
             );
         }
 
