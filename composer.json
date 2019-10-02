@@ -4,6 +4,7 @@
     "keywords": ["laravel", "saml", "saml2", "onelogin", "service provider", "identity provider"],
     "license": "MIT",
     "type": "library",
+    "version": "v0.1.1",
     "require": {
         "php": ">=7.0.0",
         "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*",
