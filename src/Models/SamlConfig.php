@@ -4,6 +4,7 @@ namespace HiHaHo\Saml\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class SamlConfig extends Model
 {
@@ -35,7 +36,7 @@ class SamlConfig extends Model
             return $url;
         }
 
-        return $this->full_idp_base_url . str_start($url, '/');
+        return $this->full_idp_base_url . Str::start($url, '/');
     }
 
     public function getFullIdpEntityIdAttribute()
@@ -71,8 +72,8 @@ class SamlConfig extends Model
             return null;
         }
 
-        if (ends_with($this->idp_base_url, '/')) {
-            return str_replace_last('/', '', $this->idp_base_url);
+        if (Str::endsWith($this->idp_base_url, '/')) {
+            return Str::replaceLast('/', '', $this->idp_base_url);
         }
 
         return $this->idp_base_url;

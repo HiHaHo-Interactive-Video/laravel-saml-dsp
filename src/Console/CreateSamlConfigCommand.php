@@ -7,6 +7,7 @@ use HiHaHo\Saml\Models\SamlSecurity;
 use HiHaHo\Saml\Traits\SamlConfigValidator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 
 class CreateSamlConfigCommand extends Command
 {
@@ -42,7 +43,7 @@ class CreateSamlConfigCommand extends Command
         }
 
         $samlConfig->name = $this->askValidated('name', 'Name', $samlConfig->name);
-        $samlConfig->slug = str_slug($this->askValidated('slug', 'Slug', $samlConfig->slug ?? str_slug($samlConfig->name)));
+        $samlConfig->slug = Str::slug($this->askValidated('slug', 'Slug', $samlConfig->slug ?? Str::slug($samlConfig->name)));
         $samlConfig->login_handler = $this->askValidated('login_handler', 'Login handler class (e.g. \App\Http\Saml\Handlers\SurfConnextHandler or saml.handlers.surfconnext)', $samlConfig->login_handler);
         $samlConfig->idp_base_url = $this->askValidated('idp_base_url', 'IdP Base URL (e.g. https://example.com/idp)', $samlConfig->idp_base_url);
         $samlConfig->idp_entity_id = $this->askValidated('idp_entity_id', 'IdP Entity ID (e.g. /metadata or https://example.com/idp/metadata)', $samlConfig->idp_entity_id ?? '/metadata');

@@ -3,6 +3,7 @@
 namespace HiHaHo\Saml\Transformers\Traits;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 trait UsesCertificates
 {
@@ -10,11 +11,11 @@ trait UsesCertificates
 
     protected function getCert($certificate)
     {
-        if (!starts_with($certificate, 'file://')) {
+        if (!Str::startsWith($certificate, 'file://')) {
             return $certificate;
         }
 
-        $certPath = str_after($certificate, 'file://');
+        $certPath = Str::after($certificate, 'file://');
 
         if (File::exists($certPath) && !File::isDirectory($certPath)) {
             return $this->extractCert($certPath);

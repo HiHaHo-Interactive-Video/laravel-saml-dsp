@@ -2,13 +2,14 @@
 
 namespace HiHaHo\Saml\Console;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 
 trait ConsoleValidator
 {
     protected function rule($ruleName)
     {
-        return array_only($this->rules(), $ruleName);
+        return Arr::only($this->rules(), $ruleName);
     }
 
     protected function askValidated($ruleName, $question, $default = null)
