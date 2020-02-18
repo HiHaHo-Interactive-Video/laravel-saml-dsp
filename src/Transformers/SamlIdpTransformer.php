@@ -36,7 +36,7 @@ class SamlIdpTransformer extends TransformerAbstract
             return $url;
         }
 
-        if (ends_with($baseUrl, '/')) {
+        if (Str::endsWith($baseUrl, '/')) {
             $baseUrl = Str::replaceLast('/', '', $baseUrl);
         }
 
