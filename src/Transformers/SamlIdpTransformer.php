@@ -4,6 +4,7 @@ namespace HiHaHo\Saml\Transformers;
 
 use HiHaHo\Saml\Models\SamlConfig;
 use HiHaHo\Saml\Transformers\Traits\UsesCertificates;
+use Illuminate\Support\Str;
 use League\Fractal\TransformerAbstract;
 
 class SamlIdpTransformer extends TransformerAbstract
@@ -36,10 +37,10 @@ class SamlIdpTransformer extends TransformerAbstract
         }
 
         if (ends_with($baseUrl, '/')) {
-            $baseUrl = str_replace_last('/', '', $baseUrl);
+            $baseUrl = Str::replaceLast('/', '', $baseUrl);
         }
 
-        $urlWithBase = $baseUrl . str_start($url, '/');
+        $urlWithBase = $baseUrl . Str::start($url, '/');
 
         if (!filter_var($urlWithBase, FILTER_VALIDATE_URL)) {
             throw new \Exception('No valid URL');

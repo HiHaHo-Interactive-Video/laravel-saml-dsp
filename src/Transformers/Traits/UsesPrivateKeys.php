@@ -3,6 +3,7 @@
 namespace HiHaHo\Saml\Transformers\Traits;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 trait UsesPrivateKeys
 {
@@ -10,11 +11,11 @@ trait UsesPrivateKeys
 
     protected function getPrivateKey($privateKey)
     {
-        if (!starts_with($privateKey, 'file://')) {
+        if (!Str::startsWith($privateKey, 'file://')) {
             return $privateKey;
         }
 
-        $certPath = str_after($privateKey, 'file://');
+        $certPath = Str::after($privateKey, 'file://');
 
         if (File::exists($certPath) && !File::isDirectory($certPath)) {
             return $this->extractPrivateKey($certPath);
