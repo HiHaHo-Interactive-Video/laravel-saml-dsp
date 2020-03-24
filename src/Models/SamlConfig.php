@@ -41,7 +41,7 @@ class SamlConfig extends Model
 
     public function getIdpEntityIdAttribute()
     {
-        return $this->idp_entity_id ?? config('saml-dsp.idp.entityId');
+        return $this->attributes['idp_entity_id'] ?? config('saml-dsp.idp.entityId');
     }
 
     public function getFullIdpEntityIdAttribute()
