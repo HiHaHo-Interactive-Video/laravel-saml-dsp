@@ -16,7 +16,7 @@ class SamlIdpTransformer extends TransformerAbstract
         $certificate = optional($samlConfig)->idp_x509_cert ?: config('saml-dsp.idp.x509cert');
 
         return [
-            'entityId' => $samlConfig->full_idp_entity_id,
+            'entityId' => $samlConfig->idp_entity_id,
             'singleSignOnService' => [
                 'url' => $samlConfig->full_idp_sso_url,
                 'binding' => $samlConfig->idp_sso_binding,
