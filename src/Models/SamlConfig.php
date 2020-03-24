@@ -39,9 +39,9 @@ class SamlConfig extends Model
         return $this->full_idp_base_url . Str::start($url, '/');
     }
 
-    public function getIdpEntityIdAttribute()
+    public function getIdpEntityIdAttribute($value)
     {
-        return $this->attributes['idp_entity_id'] ?? config('saml-dsp.idp.entityId');
+        return $value ?? config('saml-dsp.idp.entityId');
     }
 
     public function getFullIdpEntityIdAttribute()
